@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Musanze Rural LV Network Optimization, Interactive Outputs</title>
+<style>
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    max-width: 780px;
+    margin: 60px auto;
+    padding: 0 20px;
+    color: #222;
+    line-height: 1.6;
+  }
+  h1 {
+    font-size: 24px;
+    margin-bottom: 6px;
+  }
+  p.subtitle {
+    color: #555;
+    margin-top: 0;
+    margin-bottom: 32px;
+  }
+  .card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+  }
+  .card h2 {
+    font-size: 18px;
+    margin-top: 0;
+  }
+  .card p {
+    color: #444;
+    font-size: 14px;
+  }
+  a.button {
+    display: inline-block;
+    background-color: #1f4e8f;
+    color: white;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-top: 8px;
+  }
+  a.button:hover {
+    background-color: #163a6b;
+  }
+  footer {
+    margin-top: 40px;
+    font-size: 12px;
+    color: #888;
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+    margin: 14px 0 6px;
+  }
+  .stat {
+    background: #f4f6fa;
+    border-radius: 6px;
+    padding: 10px 12px;
+  }
+  .stat .n {
+    font-size: 20px;
+    font-weight: bold;
+    color: #1f4e8f;
+  }
+  .stat .l {
+    font-size: 12px;
+    color: #555;
+  }
+  ul.legend-list {
+    font-size: 13px;
+    color: #444;
+    padding-left: 18px;
+    margin: 10px 0 0;
+  }
+</style>
+</head>
+<body>
+
+<h1>A GIS and Python Based Optimization Model for Rural Low Voltage Network Design</h1>
+<p class="subtitle">Musanze District, Rwanda, supporting universal electrification. Interactive companion outputs to the written dissertation.</p>
+
+<div class="card">
+  <h2>Proposed Network Additions, Simulation</h2>
+  <p>Beyond the dissertation's own scope, this model proposes where the network still needs work and simulates it directly on the map: transformer sites needing a rated capacity, MV line extensions to reach them, and LV poles required on steep terrain to keep the conductor at REG's minimum ground clearance. All three are on by default when you open the map below.</p>
+  <div class="stats">
+    <div class="stat"><div class="n">3,863</div><div class="l">Unelectrified households in Musanze District, the demand this model serves</div></div>
+    <div class="stat"><div class="n">23</div><div class="l">Transformer sites given a proposed capacity, 650 kVA total</div></div>
+    <div class="stat"><div class="n">1,034</div><div class="l">LV poles proposed for terrain ground clearance</div></div>
+    <div class="stat"><div class="n">57</div><div class="l">Spans flagged for a special H-pole or steel pole, terrain too steep for one extra pole to fix</div></div>
+    <div class="stat"><div class="n">0</div><div class="l">Known-capacity transformers currently over 100 percent loaded, under REG's own real demand standard</div></div>
+    <div class="stat"><div class="n">0</div><div class="l">Unelectrified households inside Musanze town's urban core, cross-checked against Rwanda's national settlement layer, confirming this demand set is genuinely rural</div></div>
+  </div>
+  <p style="font-size:13px; color:#666; margin-top:10px;">Honest note: this run's 23 proposed sites are all real, already-surveyed transformer locations that simply lacked capacity data, not new greenfield sites, so their proposed MV tie-in length came out to 0 km. The moment a transformer crosses 100 percent loading, this same pipeline will site and connect a genuinely new transformer automatically, snapped to the nearest road and checked against a 1.2 km transformer-to-customer and 1.3 km road-to-customer maintenance-access limit.</p>
+</div>
+
+<div class="card">
+  <h2>Interactive Web Map</h2>
+  <p>District, sector, cell, and village administrative boundaries, roads, existing MV lines and transformers, unelectrified households, and all four network variants, conventional, MST, STP, and combined terrain plus electrical, with toggleable layers and clickable transformer popups showing real capacity and loading. Five base map choices are available from the layer control: streets, satellite imagery, terrain, light, and dark. Also includes Musanze's urban core (Secondary City), its 2 rurban centers, and 74 nucleated rural settlement sites, sourced from Rwanda's national settlement hierarchy dataset, so the rural target area is visible against the urban boundary it is defined relative to.</p>
+  <p><strong>Shown by default:</strong></p>
+  <ul class="legend-list">
+    <li>Red dots: all 3,863 real unelectrified households, the demand this whole model exists to serve</li>
+    <li>Tan shaded area: Musanze town's urban core and rurban centers, for context; zero of the 3,863 households fall inside it</li>
+    <li>Blue plus markers: proposed new transformer sites, popup shows source transformer, capacity, and households served</li>
+    <li>Dashed gold lines: proposed MV line extensions, popup shows length and estimated CAPEX</li>
+    <li>Orange dots: proposed poles inserted for terrain vertical clearance</li>
+  </ul>
+  <a class="button" href="musanze_interactive_map.html">Open interactive map</a>
+</div>
+
+<div class="card">
+  <h2>Interactive Results Dashboard</h2>
+  <p>Key performance indicators, network length and cost comparisons, voltage drop against the IEC 60364 limit, transformer loading distribution, and the automated new transformer siting recommendations, all live and hoverable.</p>
+  <a class="button" href="musanze_results_dashboard.html">Open interactive dashboard</a>
+</div>
+
+<footer>
+  Primien Dushimirimana, MLS003/25, INES-Ruhengeri.
+</footer>
+
+</body>
+</html>
